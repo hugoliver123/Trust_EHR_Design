@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jQuery.js"></script>
+    <script type="text/javascript">
+        // function copyToClipboard(text) {
+        //     alert(text);
+        //     var textarea = document.createElement("textarea");
+        //     textarea.value = text;
+        //     document.body.appendChild(textarea);
+        //     textarea.select();
+        //     try {
+        //         var successful = document.execCommand("copy");
+        //         var msg = successful ? "Copyed" : "Failed";
+        //         console.log(msg);
+        //     } catch (err) {
+        //         console.log("Copy failed");
+        //     }
+        //     document.body.removeChild(textarea);
+        // }
+        $(document).ready(function() {
+            $("#abc").click(function(){
+                alert("123");
+            });
+        });
+    </script>
+</head>
+<body>
+
+<button  id="abc">Copy</button>
+
+<button class="btn" onclick="copyToClipboard('yxt');"></button>
+</body>
+</html>

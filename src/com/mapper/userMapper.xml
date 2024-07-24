@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.userMapper">
+    <select id="queryUserByName" parameterType="String" resultType="com.entity.User">
+        SELECT userId,userName,userPass,userPosition from tb_user where userName = #{userName}
+    </select>
+    <select id="queryUserById" parameterType="int" resultType="com.entity.User">
+        SELECT userId,userName,userPass,userPosition from tb_user where userId = #{userId}
+    </select>
+    <select id="findPatients" resultType="map">
+        SELECT userId,userName FROM tb_user WHERE userPosition = "P"
+    </select>
+    <select id="findRecordCount" parameterType="int" resultType="int">
+        SELECT pRecordCount FROM tb_user WHERE userId= #{userId};
+    </select>
+    <update id="plusOneCount" parameterType="int">
+        UPDATE tb_user SET pRecordCount = pRecordCount + 1 WHERE userId= #{userId};
+    </update>
+    <select id="queryPatientByUid" parameterType="int" resultType="com.entity.User">
+        SELECT userId,userName,userPass,userPosition from tb_user where userId= #{userId};
+    </select>
+    <insert id="insertAesKey" parameterType="com.entity.AesDataFrame">
+        INSERT INTO aes_key_tb VALUES(#{name}, #{key}, #{builder}, #{shaHash}, #{ehrMac},null);
+    </insert>
+    <select id="findAesKey" parameterType="String" resultType="String">
+        SELECT aes_key FROM aes_key_tb WHERE recordId= #{name};
+    </select>
+    <select id="findBuilder" parameterType="String" resultType="String">
+        SELECT Builder FROM aes_key_tb WHERE recordId=#{name}
+    </select>
+</mapper>
